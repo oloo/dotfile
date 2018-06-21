@@ -1,0 +1,80 @@
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+
+" let vundle manage vundle -- so meta no
+Plugin 'gmarik/vundle'
+
+" list all plugins that you'd like to install here
+" Disabled this for now
+Plugin 'kien/ctrlp.vim' " fuzzy find files
+" Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
+Plugin 'benmills/vimux'
+" Plugin 'tpope/vim-fugitive' " the ultimate git helper
+" Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+Plugin 'tpope/vim-git' " git integration on trial for me now though
+" Plugin 'pangloss/vim-javascript' " add javascript integration 
+" Plugin 'mxw/vim-jsx' " add javascript integration 
+" Plugin 'jelera/vim-javascript-syntax' " adds hopefully better javascript support
+Plugin 'NLKNguyen/papercolor-theme' " add paper color theme
+" Plugin 'vim-syntastic/syntastic' " this is for syntax highlighting, no special configurations for now 
+Plugin 'bling/vim-airline' " Plugin that should fix the status bar issue. It was typically a blank blue line for the longest time
+Plugin 'valloric/youcompleteme' " This should have decent autocomplete out of the box
+call vundle#end()
+
+set nocompatible
+syntax on
+filetype plugin on
+
+" commented out this line since we do not want
+" the tree to auto show
+
+" autocmd vimenter * NERDTree 
+
+
+" Nerd tree plugin configurations
+" map <C-n> :NERDTreeToggle<CR>
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾' 
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim Javascript setting
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
+
+" vim jsx support
+" let g:jsx_ext_required = 0
+
+" setup the color scheme for vim
+set background=dark
+colorscheme PaperColor
+set number
+set laststatus=2
+
+" vim syntasitc settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Geenral vim configurations that I think should be useful
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" add mapping to turn highlighting added above since it sticks around and is
+" annoying
+map <silent> <BS> :nohlsearch<CR>
+map :g :global
+set wildmode=list:longest
